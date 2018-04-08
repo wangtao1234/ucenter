@@ -1,4 +1,4 @@
-package com.example.ucenter.config;
+package com.example.ucenter.security;
 
 import lombok.Data;
 
@@ -13,4 +13,6 @@ public class AccessToken {
     private String token_type;
 
     private  long expires_in;
+
+    private String userId;
 }

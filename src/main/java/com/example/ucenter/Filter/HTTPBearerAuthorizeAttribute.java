@@ -5,7 +5,6 @@ import com.example.ucenter.utils.JwtHelper;
 import com.example.ucenter.utils.ResultMsg;
 import com.example.ucenter.utils.ResultStatusCode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import sun.misc.BASE64Decoder;

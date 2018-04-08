@@ -11,8 +11,14 @@ import java.util.Date;
 
 /**
  * Created by admin on 2018/3/30.
+ * 构造及解析jwt的工具类
  */
 public class JwtHelper {
+    /**
+     * @param jsonWebToken
+     * @param base64Security
+     * @return
+     */
     public  static Claims parseJWT(String jsonWebToken, String base64Security){
         try {
             Claims claims = Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(base64Security))
@@ -23,6 +29,17 @@ public class JwtHelper {
         }
     }
 
+    /**
+     * 生成token
+     * @param name 用户名
+     * @param userId 用户编号
+     * @param role 角色
+     * @param audience 接收者
+     * @param issuer 发行者
+     * @param TTLMillis 过期时间
+     * @param base64Security 64位编码
+     * @return 返回结果
+     */
     public  static  String createJWT(String name,String userId,String role,
                                      String audience,String issuer, long TTLMillis, String base64Security){
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
@@ -36,8 +53,8 @@ public class JwtHelper {
         //添加构成JWT参数
         JwtBuilder builder = Jwts.builder().setHeaderParam("typ","JWT")
                 .claim("role",role)
-                .claim("unique_name",name)
-                .claim("userid",userId)
+                .claim("userName",name)
+                .claim("userId",userId)
                 .setIssuer(issuer)
                 .setAudience(audience)
                 .signWith(signatureAlgorithm,signingKey);
